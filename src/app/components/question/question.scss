@@ -1,0 +1,9 @@
+.questionButton {
+    transition: var(--transition);
+    &:hover {
+        background: var(--darkMain) !important;
+    }
+    .MuiTouchRipple-root {
+        background: transparent !important;
+    }
+}

@@ -1,0 +1,99 @@
+.questionFormCard {
+    font-weight: var(--fontWeight);
+    input {
+        font-weight: var(--fontWeight);
+    }
+}
+
+.fieldHeight {
+    min-height: var(--fieldHeight);
+    max-height: var(--fieldHeight);
+}
+
+.flexedField {
+    display: flex;
+    color: white;
+    align-items: center;
+    flex-direction: column;
+    min-height: var(--fieldHeight);
+}
+
+.light {
+    .selectField {
+        svg {
+            path {
+                fill: var(--fontColor);
+            }
+        }
+    }
+    .choiceButton {
+        background: var(--main);
+        &.selected {
+            .iconButtonIcon {
+                path {
+                    fill: white;
+                }
+            }
+            background: var(--iconRight);
+        }
+    }
+}
+
+.choiceButton {
+    background: var(--darkMain);
+    &.mainDark {
+        background: var(--mainDark);
+    }
+    &.selected {
+        background: var(--mainDark);
+        .iconButtonIcon {
+            path {
+                fill: var(--success);
+            }
+        }
+    }
+    &:hover {
+        background: var(--main) !important;
+    }
+}
+
+.MuiList-root {
+    &:has(.selectItem) {
+        background: var(--darkMain);
+        .selectItem {
+            transition: var(--transition);
+            &.Mui-selected {
+                background: var(--mainDark);
+            }
+            &:hover {
+                background: var(--main);
+            }
+        }
+    }
+}
+
+.selectField {
+    @extend .flexedField;
+    background: var(--mainDark);
+    justify-content: space-between;
+    border-radius: var(--borderRadius);
+    .MuiOutlinedInput-root {
+        width: 100%;
+    }
+    .MuiSelect-select {
+        width: 100%;
+        font-weight: var(--fontWeight);
+    }
+    svg {
+        path {
+            fill: var(--fontColor);
+        }
+    }
+    .MuiInputBase-input {
+        @extend .flexedField;
+        padding-top: 0;
+        padding-left: 0;
+        padding-bottom: 0;
+        justify-content: center;
+    }
+}

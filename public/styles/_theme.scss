@@ -1,0 +1,503 @@
+$mobileMenuBreakPointS: 768px;
+$mobileMenuBreakPointM: 992px;
+$mobileMenuBreakPointL: 1200px;
+
+:root {
+    // Main
+    --space: 24px;
+    --fontWeight: 600;
+    --borderRadius: 5px;
+    --fieldHeight: 42px;
+    --inputHeight: 42.25px;
+    --collapsedHeight: 58px;
+    --transition: 0.24s var(--altTransition) !important;
+    --altTransition: cubic-bezier(0.77, 0.2, 0.05, 1) !important;
+    --cardShadow: rgb(145 158 171 / 30%) 0px 1px 2px 0px, rgb(145 158 171 / 12%) 0px 12px 24px -4px !important;
+    --font: '__Plus_Jakarta_Sans_a182b8', '__Plus_Jakarta_Sans_Fallback_a182b8', Helvetica, Arial, sans-serif;
+
+    // Breakpoints
+    --mobileMenuBreakPointS: $mobileMenuBreakPointS;
+    --mobileMenuBreakPointM: $mobileMenuBreakPointM;
+    --mobileMenuBreakPointL: $mobileMenuBreakPointL;
+    
+    // Colors
+    --bg: #041b44;
+    --main: #5D87FF;
+    --cardBg: #04397b;
+    --success: #13DEB9;
+    --fontColor: white;
+    --darkMain: var(--bg);
+    --gameBlue: #00c2ff;
+    --mainDark: #0082c6;
+    --iconRight: #3DD9EB;
+    --iconLeft: var(--main);
+    --darkMainLight: #1972ea;
+    --altMain: rgb(61 175 235);
+    --drawerBorder: var(--cardBg);
+    
+    // Questions
+    --Easy1: var(--iconRight);
+    --Easy2: #39d2c0;
+    --Easy3: #7DF9FF;
+    --Easy4: var(--mainDark);
+    --Easy: var(--Easy4);
+    
+    --Medium1: var(--mainDark);
+    --Medium2: #fae84a;
+    --Medium3: var(--darkMainLight);
+    --Medium4: #20a797;
+    --Medium5: #01ae9a;
+    --Medium: var(--Medium5);
+
+    --Hard1: #e72f6e;
+    --Hard2: var(--darkMainLight);
+    --Hard3: #c20042;
+    --Hard4: #bd3966;
+    --Hard5: #c01d55;
+    --Hard: var(--Hard5);
+    
+    --Extreme1: #6f61ef;
+    --Extreme2: #c874fe;
+    --Extreme: var(--Extreme1);
+
+    // Other Colors
+    --teal: #3fa5e3;
+    --darkSub: #1c2a49;
+    --tealLight: #49BEFF;
+    --mainLight: #ecf2ff;
+    --navyBlueBG: #071632;
+    --darkBorder: #151515;
+    --iconLeftOld: #615DFF;
+    --lightBorder: #e5eaef;
+    --defFontColor: #adb0bb;
+    --cardBgViolet: #1c3c81;
+    --defaultColor: #2A3547;
+    --tealSuperLight: #3dd9eb;
+    --drawerBorderOld: #152a37;
+    --lightRipple: rgba(0, 81, 255, 0.1);
+    --darkRipple: rgba(93, 135, 255, 0.25);
+}
+
+.bgMain {
+    background: var(--main) !important;
+}
+
+.borderRadius {
+    border-radius: var(--borderRadius);
+}
+
+.iconButton {
+    grid-gap: 5px;
+    padding: 0 !important;
+    justify-content: center;
+    .MuiButton-icon {
+        margin: 0;
+    }
+}
+
+.iconButtonIcon {
+    transition: var(--transition);
+}
+
+.customCardTitle {
+    h2 {
+        font-size: 18px;
+        font-weight: var(--fontWeight);
+    }
+}
+
+.quizIcon {
+    font-size: 27px;
+    path {
+        &:first-child {
+            fill: var(--mainDark);
+        }
+        &:last-child {
+            fill: var(--main);
+        }
+    }
+}
+
+.customFormField {
+    width: 100%;
+    border: none;
+    outline: none;
+    color: var(--fontColor);
+    background: var(--darkMain);
+    min-height: var(--fieldHeight);
+    border-radius: var(--borderRadius);
+}
+
+.card {
+    max-height: 1000px;
+    @extend .altTransition;
+    &.p0 {
+        padding: 0;
+        .cardContent {
+            padding: 0;
+        }
+    }
+}
+
+.expandCollapse {
+    margin: 0;
+    padding: 5px !important;
+    background: var(--mainDark);
+}
+
+.collapsed {
+    max-height: var(--collapsedHeight) !important;
+}
+
+.altTransition {
+    overflow: hidden !important;
+    transition: all 650ms var(--altTransition) !important;
+}
+
+.headerCardMenu {
+    @extend .altTransition;
+    max-height: 0 !important;
+    &.expanded {
+        max-height: 620px !important;
+    }
+    .sidebarItems {
+        padding-left: 16px;
+        padding-right: 16px;
+        li {
+            margin: 0;
+        }
+    }
+    .expandCollapse {
+        top: 13px;
+        margin: 0;
+        opacity: 1;
+        right: 16px;
+        position: absolute;
+        padding: 3px !important;
+        border-radius: 100% !important;
+        background: var(--main) !important;
+        svg {
+            position: relative;
+            top: 1px;
+        }
+        strong {
+            display: none;
+        }
+        span {
+            margin: 0;
+        }
+        &:hover {
+            background: var(--mainDark) !important;
+        }
+        @media (max-width: 1200px) and (min-width: 600px) {
+            top: 16px;
+            right: 23px;
+        }
+    }
+    @media (min-width: $mobileMenuBreakPointL) {
+        display: none;
+    }
+}
+
+.hoverAction {
+    transition: var(--transition);
+    &:hover {
+        border-radius: 5px;
+        background: var(--main) !important;
+    }
+}
+
+.hasBackground {
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
+
+.Mui-focused {
+    fieldset {
+        border-color: var(--main) !important;
+    }
+}
+
+// .gridReset {
+//     @extend .zeroImportant;
+// }
+
+// .MuiGrid-container {
+//     @extend .gridReset;
+//     grid-gap: var(--space);
+//     width: 100% !important;
+// }
+
+// .MuiGrid-item {
+//     @extend .gridReset;
+// }
+
+.MuiTooltip-arrow {
+    color: var(--main);
+}
+
+.MuiTooltip-tooltip {
+    background: var(--main);
+}
+
+.MuiTouchRipple-root {
+    transition: var(--transition);
+}
+
+.MuiInputLabel-root {
+    font-weight: 900;
+    font-size: 15px;
+}
+
+.headerRight {
+    button {
+        @extend .mainButton;
+    }
+}
+
+.coordinateField {
+    .MuiInputBase-root {
+        max-width: 120px !important;
+    }
+}
+
+.mobileMenuIconButton {
+    &:hover {
+        background: transparent !important;
+        .MuiTouchRipple-root {
+            background: transparent !important;
+        }
+    }
+}
+
+input {
+    @extend .borderRadius;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    min-height: var(--inputHeight);
+    max-height: var(--inputHeight);
+    height: var(--inputHeight) !important;
+}
+
+.mainButton {
+    background: var(--main);
+    border: none !important;
+    color: var(--fontColor) !important;
+    &:not(.MuiIconButton-root) {
+        padding-left: 15px;
+    }
+    &:not(.ignoreFontButton) {
+        svg {
+            font-size: 25px !important;
+        }
+    }
+    svg {
+        color: var(--fontColor) !important;
+    }
+    &:hover {
+        background: var(--mainDark) !important;
+    }
+    &:has(.homeIcon) {
+        padding: 5px;
+    }
+    @media (max-width: $mobileMenuBreakPointL) {
+        padding: 5px;
+        &:has(.homeIcon) {
+            padding: 4px;
+        }
+        &:not(.ignoreFontButton) {
+            svg {
+                font-size: 20px !important;
+            }
+        }
+    }
+}
+
+.geoDataFormTypesToggle {
+    width: 100%;
+    border: none !important;
+    .geoDataFormTypesToggleBtn {
+        width: 100%;
+        border-top: none;
+        border-bottom: none;
+        color: var(--fontColor);
+        background: var(--darkMain);
+        &.Mui-selected {
+            background: var(--main);
+        }
+        &:not(.noBorder) {
+            border-left: 1px solid var(--fontColor) !important;
+        }
+        &.first, &.last {
+            border: none;
+            &.first {
+                border-left: none !important;
+            }
+        }
+    }
+}
+
+// Theme Colors
+.light {
+    --mainDark: var(--main);
+    --darkMain: var(--cardBg);
+    --labelColor: var(--main);
+    --drawerBorder: var(--fontColor);
+    // --darkMain: var(--darkMainLight);
+    header {
+        border-bottom: 1px solid var(--drawerBorder);
+    }
+    .logoContainer strong {
+        color: var(--darkMain) !important;
+    }
+    .sidebarPaper {
+        border-color: var(--drawerBorder);
+    }
+    .MuiListSubheader-root {
+        color: var(--labelColor);
+    }
+    .MuiInputLabel-root {
+        color: var(--labelColor);
+    }
+    button {
+        &:hover {
+            .MuiTouchRipple-root {
+                background: var(--lightRipple);
+            }
+        }
+    }
+}
+
+.dark {
+    --main: var(--altMain);
+    // --mainDark: var(--main);
+    --labelColor: var(--iconRight);
+    background: var(--bg) !important;
+    // Sidebar & Top Bar
+    header {
+        border-bottom: 1px solid var(--drawerBorder);
+    }
+    .fontColor {
+        color: var(--fontColor);
+    }
+    .blackButton {
+        &:hover {
+            background: black;
+        }
+    }
+    // Menu
+    // Menu Sub Headers
+    .MuiListSubheader-root {
+        color: var(--labelColor);
+    }
+    // Menu Active
+    .MuiListItem-root {
+        .MuiButtonBase-root {
+            .menuIcon {
+                color: var(--labelColor);
+                transition: none !important;
+            }
+            &.Mui-selected {
+                background: var(--mainDark);
+            }
+        }
+    }
+    h1, h2, h3, h4, h5, h6, p {
+        color: var(--fontColor);
+    }
+    .MuiInputLabel-root {
+        color: var(--labelColor);
+    }
+    input {
+        color: var(--fontColor);
+        background: var(--darkMain);
+    }
+    // Navigation Links & Buttons
+    .button {
+        background: var(--altMain);
+    }
+    a, .actionBtn {
+        @extend .darkItem;
+    }
+    .profileMenu {
+        li, .MuiListItemIcon-root {
+            @extend .darkItem;
+        }
+    }
+    .noAccountBox {
+        background: var(--darkMain) !important;
+        .MuiButton-root {
+            background: var(--teal);
+            &:hover {
+                background: var(--bg) !important;
+            }
+        }
+    }
+    .geoDataFormTypesToggleBtn {
+        color: var(--fontColor);
+    }
+    button {
+        &:hover {
+            .MuiTouchRipple-root {
+                background: var(--darkRipple);
+            }
+        }
+    }
+    .drawerContainer {
+        border-right: 1px solid var(--drawerBorder);
+    }
+    .logoContainer {
+        color: var(--fontColor);
+    }
+    .darkItem {
+        transition: var(--transition);
+        color: var(--fontColor) !important;
+        &:hover {
+            background: var(--darkMain) !important;
+        }
+    }
+    .apexcharts-menu-icon {
+        svg {
+            path {
+                &:last-child {
+                    fill: var(--fontColor);
+                }
+            }
+        }
+    }
+    .sidebarPaper, .mobileMenuPaper {
+        border-color: var(--cardBg);
+    }
+    // Cards & Paper Sheets
+    .MuiContainer-root, .apexcharts-tooltip, .apexcharts-tooltip-title {
+        background: var(--bg) !important;
+    }
+    .apexcharts-menu {
+        background: var(--cardBg);
+        border-color: var(--teal);
+        .apexcharts-menu-item {
+            transition: var(--transition);
+            &:hover {
+                background: var(--darkMain);
+            }
+        }
+    }
+    .apexcharts-tooltip, .apexcharts-theme-dark {
+        border: 1px solid var(--teal) !important;
+        .apexcharts-tooltip-title {
+            border-bottom-color: var(--teal) !important;
+        }
+    }
+    .MuiPaper-root {
+        color: var(--fontColor) !important;
+        &:not(.hasBackground) {
+            background: var(--cardBg) !important;
+        }
+    }
+    th, td {
+        border-color: var(--teal) !important;
+    }
+    .MuiTimelineConnector-root {
+        background: var(--teal);
+    }
+}

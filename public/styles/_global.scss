@@ -1,0 +1,102 @@
+.disabled {
+    pointer-events: none;
+}
+
+[disabled] {
+    opacity: 0.55;
+}
+
+.topHeaderLogo {
+    .logoContainer {
+        padding-left: 0;
+    }
+}
+
+.mobileMenuIconButton {
+    svg {
+        top: 3px;
+        position: relative;
+    }
+}
+
+.salesOverviewChart {
+    padding-bottom: 23px !important;
+}
+
+.loginLogoutButton {
+    color: white;
+    background: var(--main);
+    &:hover {
+        color: var(--main);
+    }
+}
+
+.logoContainer {
+    color: black;
+    font-size: 24px;
+    padding: 15px 22px;
+    &.sidebarLogoContainer {
+        padding: 22px 22px 15px;
+    }
+}
+
+.scaleIn {
+    animation: scaleIn 5000ms ease-in-out infinite;
+}
+
+@keyframes scaleIn {
+    0% {
+        background-size: 125% !important;
+    }
+    100% {
+        background-size: 100% !important;
+    }
+}
+
+@media (max-width: $mobileMenuBreakPointL) {
+    .hideOnMobileL {
+        display: none;
+    }
+    .sidebarLogoContainer {
+        justify-content: center;
+    }
+}
+
+@media (max-width: $mobileMenuBreakPointM) {
+    .hideOnMobileM {
+        display: none;
+    }
+}
+
+@media (max-width: $mobileMenuBreakPointS) {
+    .hideOnMobileS {
+        display: none;
+    }
+    input, textarea {
+        font-size: 16px !important;
+    }
+    .signInOptionsRow {
+        span, a {
+            font-size: 12px;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    :root {
+        --space: 16px;
+    }
+}
+
+@media (max-width: 450px) {
+    .geoDataFormTypesToggle {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 365px) {
+    footer {
+        grid-gap: 15px;
+        flex-direction: column;
+    }
+}
