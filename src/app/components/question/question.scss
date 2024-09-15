@@ -7,3 +7,16 @@
         background: transparent !important;
     }
 }
+
+.topicLabel {
+    align-content: center;
+}
+
+.deleteButton {
+    svg {
+        font-size: 18px;
+        path {
+            fill: var(--fontColor);
+        }
+    }
+}

@@ -1,8 +1,12 @@
 import './question.scss';
 
-import { Button, Grid } from '@mui/material';
+import { Button, Grid, IconButton, Tooltip } from '@mui/material';
 import { letters } from '@/app/shared/library/common/constants';
 import DCard from '@/app/(DashboardLayout)/components/shared/DCard';
+import { Delete } from '@mui/icons-material';
+import { deleteQuestionsFromDatabase } from '@/server/firebase';
+import { useContext } from 'react';
+import { SharedDatabase } from '@/app/shared/shared';
 
 export type QuestionCardOptions = {
   title?: string;
@@ -15,6 +19,7 @@ export type QuestionCardOptions = {
 export class Question {
   [key: string]: any;
   constructor(quesObj: {
+    id: string;
     subject: string;
     topics: string[],
     question: string,
@@ -34,6 +39,8 @@ export default function QuestionCard({
   bgColor = `var(--${question.difficulty})`,
   fontColor = `var(--fontColor) !important`,
 }: QuestionCardOptions) {
+
+  let { user } = useContext<any>(SharedDatabase);
 
   let buttonStyle = { 
     color: fontColor, 
@@ -58,12 +65,22 @@ export default function QuestionCard({
         action={(
           <div className={`questionAndTopics flex spaceBetween`}>
             <strong>{question.question}</strong>
-            <div className={`topics simpleFlex alignCenter gap5`}>
-              {question.topics.map((topic: any, tidx: any) => (
-                <strong key={tidx}>
-                  <i>{topic}{tidx == question.topics.length - 1 ? `` : `, `}</i>
-                </strong>
-              ))}
+            <div className={`questionActions simpleFlex alignCenter gap15`}>
+              <div className={`topics simpleFlex alignCenter gap5`}>
+                {question.topics.map((topic: any, tidx: any) => (
+                  <strong key={tidx} className={`topicLabel`}>
+                    <i>{topic}{tidx == question.topics.length - 1 ? `` : `, `}</i>
+                  </strong>
+                ))}
+              </div>
+              {user != null ? <>
+                <Tooltip title={`Delete`}>
+                <IconButton className={`deleteButton`} size={`small`} 
+                  onClick={(e) => deleteQuestionsFromDatabase(question.id)}>
+                  <Delete />
+                </IconButton>
+              </Tooltip>
+              </> : <></>}
             </div>
           </div>
         )}>

@@ -2,16 +2,18 @@
 
 import './questionform.scss';
 
+import {  useContext, useState } from 'react';
+import { uniqueId } from 'lodash';
 import { Question } from '../questioncard';
-import { useContext, useState } from 'react';
 import { Check, Edit } from '@mui/icons-material';
-import { SharedDatabase } from '@/app/shared/shared';
+import { addQuestionToDatabase } from '@/server/firebase';
 import { letters } from '@/app/shared/library/common/constants';
 import DCard from '@/app/(DashboardLayout)/components/shared/DCard';
 import { SampleQuestions } from '@/app/shared/database/questions/questions';
 import { Difficulties, Subjects } from '@/app/shared/library/common/dictionaries';
 import CustomTextField from '@/app/(DashboardLayout)/components/forms/theme-elements/CustomTextField';
 import { Button, FormControl, Grid, MenuItem, Select, SelectChangeEvent, TextareaAutosize, useMediaQuery } from '@mui/material';
+import { SharedDatabase } from '@/app/shared/shared';
 
 export type QuestionFormOptions = {
     topics?: string[];
@@ -32,7 +34,7 @@ export default function QuestionForm({
     subjects = Object.values(Subjects).map(s => s.name),
 }: QuestionFormOptions) {
 
-    let { setQuestions } = useContext<any>(SharedDatabase);
+    let { questions } = useContext<any>(SharedDatabase);
 
     let [answer, setAnswer] = useState<any>(letters[0]);
     let [subject, setSubject] = useState<any>(Subjects.Math);
@@ -83,12 +85,11 @@ export default function QuestionForm({
             choices: [A, B, C, D],
             answer: value[answer],
             subject: subject.name,
+            id: `Question-${questions.length}-${uniqueId()}`,
             explanation: explanation as string,
         });
 
-        console.log(`Question`, questionToSet);
-
-        setQuestions((prevQuestions: Question[]) => [questionToSet, ...prevQuestions]);
+        addQuestionToDatabase(questionToSet);
     }
 
     return (

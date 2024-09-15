@@ -17,6 +17,7 @@ const nextConfig = withPWA({
       { source: `/profile`, destination: `/pages/profile` },
       { source: `/settings`, destination: `/pages/settings` },
       { source: `/questions`, destination: `/pages/questions` },
+      { source: `/automargin`, destination: `/pages/automargin` },
       { source: `/notifications`, destination: `/pages/notifications` },
     ];
   },

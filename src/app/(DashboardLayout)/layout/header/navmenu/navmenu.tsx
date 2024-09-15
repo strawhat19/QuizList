@@ -22,9 +22,9 @@ export default function NavMenu({ showLogo = true, onItemClick }: NavMenuOptions
         <nav className={`sidebarContainer spaceBetween h100 gap15 flex column`}>
           <div className={`sidebarTop w100 ${showLogo ? (largeScreenSize ? `` : `m15t`) : ``}`}>
             {showLogo ? (
-                <Link href={`/`} className={`link`}>
-                    <Logo className={`sidebarLogoContainer`} />
-                </Link>
+              <Link href={`/`} className={`link`}>
+                  <Logo className={`sidebarLogoContainer`} />
+              </Link>
             ) : <></>}
             <Box className={`sidebarItems`} sx={{ px: 3 }}>
               <List className={`sidebarNav`} component={`div`} sx={{ pt: 0 }}>

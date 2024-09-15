@@ -20,7 +20,7 @@ export default function Document({ children }: { children: React.ReactNode; }) {
                         />
                         <div className={`page content w100`}>
                             <Header />
-                            <main id={`main`} className={`main space column flex gapSpace w100`}>
+                            <main id={`main`} className={`main column flex space gapSpace w100`}>
                                 {children}
                             </main>
                             <Footer />

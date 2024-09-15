@@ -3,7 +3,6 @@
 import { useContext } from 'react';
 import { Grid } from '@mui/material'
 import { SharedDatabase } from '@/app/shared/shared';
-import { devEnv } from '@/app/shared/library/common/constants';
 import QuestionCard from '@/app/components/question/questioncard';
 import { routes } from '@/app/(DashboardLayout)/components/nav/nav';
 import QuestionForm from '@/app/components/question/questionform/questionform';
@@ -14,7 +13,7 @@ export default function HomePage() {
   return (
     <PageContainer title={routes.questions.title} description={`${routes.questions.title} Page`}>
       <Grid container spacing={3}>
-        <QuestionForm expanded={devEnv} />
+        <QuestionForm expanded={false} />
         {questions && questions.length > 0 ? (
           <Grid className={`questionsContainerItem`} item xs={12}>
             <Grid className={`questionsContainer`} container spacing={3}>
@@ -27,7 +26,12 @@ export default function HomePage() {
               })}
             </Grid>
           </Grid>
-        ) : <>No Questions Yet</>}
+        ) : <>
+          <div className={`questionsLoading`} 
+            style={{ color: `var(--fontColor)`, textAlign: `center`, width: `100%`, paddingTop: 25 }}>
+            Questions Loading...
+          </div>
+        </>}
       </Grid>
     </PageContainer>
   );
