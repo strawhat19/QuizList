@@ -9,11 +9,11 @@ import QuestionForm from '@/app/components/question/questionform/questionform';
 import PageContainer from '@/app/(DashboardLayout)/components/container/PageContainer';
 
 export default function HomePage() {
-  let { questions } = useContext<any>(SharedDatabase);
+  let { user, questions } = useContext<any>(SharedDatabase);
   return (
     <PageContainer title={routes.questions.title} description={`${routes.questions.title} Page`}>
       <Grid container spacing={3}>
-        <QuestionForm expanded={false} />
+        {user != null && <QuestionForm expanded={false} />}
         {questions && questions.length > 0 ? (
           <Grid className={`questionsContainerItem`} item xs={12}>
             <Grid className={`questionsContainer`} container spacing={3}>
